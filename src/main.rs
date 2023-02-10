@@ -21,7 +21,7 @@ fn main() {
             return;
         }
         println!("Use: run [filename.w | filename.f]");
-        println!("     shellb");
+        println!("     shellf");
         println!("     shellw");
         return;
     }
