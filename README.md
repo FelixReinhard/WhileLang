@@ -87,10 +87,11 @@ The **While Language** has 5 statements.
        
 The **For Language** has the same statements, except to *While loop*. Instead it has the
 - For Loop
-        for x_0 Do 
-            ...
-        Od
-
+```
+  for x_0 Do 
+      ...
+  Od
+```
 ## What is the While programming language
 The **While Language** is a formal model of a simple programming Language. It is mostly used in a theoretical environment  to prove *computability* related topics. There is only one loop, the while loop, which repeats the statements inside until the variable in the condition becomes zero.
 
