@@ -59,21 +59,32 @@ out x_0
 ## Syntax 
 The **While Language** has 5 statements.
 - Addition 
-        x_0 = x_1 + x_2 
+```
+  x_0 = x_1 + x_2 
+```
 - Subtraction: 
-        x_0 = x_1 - x_2
+```
+  x_0 = x_1 - x_2
+```
 - Assignment:
-        x_0 = 42
+```
+  x_0 = 0
+```
 - While loop:
-        while x_0 != 0 Do 
-            ...
-        Od
+```
+  while x_0 != 0 Do 
+      ...
+  Od
+```
 - Input:
-        in x_0 
+```
+  in x_0 
+```
 - Output:
-        out x_0
-        
-        
+```
+  out x_0 
+```
+       
 The **For Language** has the same statements, except to *While loop*. Instead it has the
 - For Loop
         for x_0 Do 
