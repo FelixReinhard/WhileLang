@@ -20,11 +20,11 @@ impl Interpreter {
         Some(*self.map.get(&0).unwrap_or(&0))
     }
 
-    pub fn print_map(&self) {
-        for (key, value) in &self.map {
-            println!("x_{} = {}", key, value);
-        }
-    }
+    // pub fn print_map(&self) {
+    //     for (key, value) in &self.map {
+    //         println!("x_{} = {}", key, value);
+    //     }
+    // }
 
     fn interpret_statements(&mut self, stmt : &Statement) {
         match stmt {

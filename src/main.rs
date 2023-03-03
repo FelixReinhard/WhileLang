@@ -32,8 +32,7 @@ fn main() {
 
     let to_run = &args[2];
     if to_run.contains(".w") {
-        if let Ok(val) = run(to_run, true) {
-            println!("Programm exited with {}", val);
+        if let Ok(_) = run(to_run, true) {
         } else {
             println!("Programm contained an error");
         }
@@ -121,7 +120,7 @@ fn run(path: &String, is_while: bool) -> Result<i32, ()> {
 
             let mut interpreter = Interpreter::new(is_while);
             let result = interpreter.interpret(stmts);
-            interpreter.print_map();
+            // interpreter.print_map();
             return Ok(result.unwrap_or(0));
         } else {
             return Err(());
