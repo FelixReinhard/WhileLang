@@ -98,5 +98,5 @@ The **While Language** is a formal model of a simple programming Language. It is
 There is also the **For Language**, where the only difference is that the while loop is replaced by a for loop. This loop repeats a set number of times when reaching the first point of execution.
 
 ## Why does this exist? 
-There is no good reason for this implementation to exist. I would not recommend using this in for anything.
+There is no good reason for this implementation to exist. I would not recommend using this for anything.
 
