@@ -13,7 +13,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() != 3 {
-        if args.len() == 2 && args[1] == "shellb" {
+        if args.len() == 2 && args[1] == "shellf" {
             shell(false);
             return;
         } else if args.len() == 2 && args[1] == "shellw" {
@@ -92,12 +92,16 @@ fn shell(is_while: bool) {
         };
         
         let result = interpreter.interpret(stmts);
-        interpreter.print_map();
-        if let Some(r) = result {
-            println!("Result : {}", r);
-        } else {
-            println!("error interpreting stmt");
+        match result {
+            None => println!("Error interpreting!"),
+            _ => {}
         }
+        // interpreter.print_map();
+        // if let Some(r) = result {
+        //     println!("Result : {}", r);
+        // } else {
+        //     println!("error interpreting stmt");
+        // }
     }
 }
 

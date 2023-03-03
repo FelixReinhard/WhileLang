@@ -9,6 +9,8 @@ pub enum Statement {
     Constant(u32, i32),
     Loop(u32, Box<Statement>),
     Concat(Box<Statement>, Box<Statement>),
+    In(u32),
+    Out(u32),
     None,
 }
 
@@ -68,11 +70,39 @@ impl Parser {
                     None
                 }
             }
+            Token::TkIn => self.in_statement(),
+            Token::TkOut => self.out_statement(),
             _ => {
                 println!("statement must begin with variable");
                 None
             }
         }
+    }
+
+    fn in_statement(&mut self) -> Option<Statement> {
+        self.consume(Token::TkIn); 
+        let var1;
+        if let Some(v) = self.variable() {
+            var1 = v;
+        } else {
+            println!("No Variable here parsing in statement");
+            return None;
+        }
+
+        return Some(Statement::In(var1));
+    }
+
+    fn out_statement(&mut self) -> Option<Statement> {
+        self.consume(Token::TkOut); 
+        let var1;
+        if let Some(v) = self.variable() {
+            var1 = v;
+        } else {
+            println!("No Variable here parsing out statement");
+            return None;
+        }
+
+        return Some(Statement::Out(var1));
     }
 
     fn for_statement(&mut self) -> Option<Statement> {

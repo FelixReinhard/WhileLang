@@ -1,6 +1,5 @@
 use std::str::FromStr;
 
-
 use crate::charstream::CharStream;
 
 // problem with iterator because we cant peek it without advancing it fucking sucks
@@ -18,6 +17,8 @@ pub enum Token {
     TkMinus,
     TkNeq,
     TkEq,
+    TkOut,
+    TkIn,
 }
 
 pub fn lex(chars: &mut CharStream) -> Option<Vec<Token>> {
@@ -55,7 +56,14 @@ pub fn lex(chars: &mut CharStream) -> Option<Vec<Token>> {
                 '!' => {
                     ret.push(is_next_char('=', chars, Token::TkNeq)?);
                 }
-                'o' | 'O' => ret.push(is_next_char('d', chars, Token::TkOd)?),
+                'o' | 'O' => {
+                    if chars.peek()? == 'u' {
+                        chars.next();
+                        ret.push(is_next_char('t', chars, Token::TkOut)?);
+                    } else {
+                        ret.push(is_next_char('d', chars, Token::TkOd)?)
+                    }
+                }
                 'd' | 'D' => ret.push(is_next_char('o', chars, Token::TkDo)?),
                 ' ' | '\n' | '\r' => {
                     current_char = chars.next();
@@ -65,6 +73,7 @@ pub fn lex(chars: &mut CharStream) -> Option<Vec<Token>> {
                     let cc = number_with(c, chars);
                     ret.push(Token::TkConstant(cc?));
                 }
+                'i' | 'I' => ret.push(is_next_char('n', chars, Token::TkIn)?),
                 _ => {
                     return None;
                 }
@@ -119,7 +128,7 @@ fn variable(chars: &mut CharStream) -> Option<Token> {
 fn number(chars: &mut CharStream) -> Option<u32> {
     let mut number_str = String::new();
     loop {
-        if  !chars.is_empty() && chars.peek()?.is_digit(10) {
+        if !chars.is_empty() && chars.peek()?.is_digit(10) {
             number_str.push(chars.next()?);
         } else {
             break;

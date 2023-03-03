@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::io;
 
 use crate::parser::Statement;
 
@@ -56,6 +57,17 @@ impl Interpreter {
                 let left = *self.map.get(var2).unwrap_or(&0);
                 let right = *self.map.get(var3).unwrap_or(&0);
                 self.map.insert(*var1, left + right);
+            },
+            Statement::In(var) => {
+                let mut input_line = String::new();
+                io::stdin()
+                    .read_line(&mut input_line)
+                    .expect("Failed to read line");
+                let x: i32 = input_line.trim().parse().expect("Input not an integer");
+                self.map.insert(*var, x);
+            },
+            Statement::Out(var) => {
+                println!("{}", self.map.get(var).unwrap_or(&0));
             }
         }
     }
