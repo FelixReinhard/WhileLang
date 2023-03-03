@@ -24,7 +24,7 @@ cargo run --release run test.w
 
 ## Examples
 
-1. Calculate the *fibonacci* number given as an input.
+1. Calculate the *fibonacci* numbers.
 
 ```
 in x_0
