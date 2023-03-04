@@ -57,7 +57,7 @@ out x_0
 ```
 
 ## Syntax 
-The **While Language** has 5 statements.
+The **While Language** has 6 statements.
 - Addition 
 ```
   x_0 = x_1 + x_2 
